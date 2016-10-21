@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="ellipsis-string">
+  <template>
+    <span>{{chunk}}</span>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ellipsis-string',
+      properties: {
+        str: {
+          type: String,
+          value: ''
+        },
+        len: {
+          type: Number,
+          value: 20
+        },
+        chunk: {
+          type: String,
+          computed: 'calculateChunk(len, str)'
+        }
+      },
+      calculateChunk: function(len, str) {
+        if (str.length <= len || len <= 0) {
+          return str;
+        }
+        var chunk = str.substr(0, len);
+        return chunk.substr(0, Math.min(chunk.length, chunk.lastIndexOf(' '))) + '...';
+      }
+    });
+  </script>
+</dom-module>
