@@ -3,62 +3,26 @@
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../utils/ellipsis-string.html">
 
-<dom-module id="character-card">
+<dom-module id="character-list">
   <template>
     <style>
       :host {
-        display: flex;
+        display: block;
       }
-
-      paper-card {
-        width: 250px;
-      }
-      --paper-card-header-image: {
-        width: 250px;
-      }
-      --paper-card-header-image: {
-        max-height: 220px;
-      }
-
-      h1 {
-        color: #3f5185;
-        font-size: 1.2em;
-        font-family: roboto, sans-serif;
-      }
-
-      .card-content p {
-        font-size: .9em;
-      }
-
-      .not-description {
-        color: #999;
-      }
-
-      .card-actions {
-        color: #d7ccc8;
-      }
-
     </style>
-
-    <paper-card image="https://i.annihil.us/u/prod/marvel/i/mg/2/e0/5801124cc0e94/portrait_incredible.jpg">
-      <div class="card-content">
-        <h1>Iron Man</h1>
-        <p>
-          <ellipsis-string
-            str="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, enim, fugit id labore molestias natus praesentium quia quo sapiente sed sint suscipit unde vero. Ab architecto asperiores numquam vel vitae"
-            len="50"
-          ></ellipsis-string>
-        </p>
-      </div>
-      <div class="card-actions">
-        <paper-icon-button icon="icons:star-border"></paper-icon-button>
-      </div>
-    </paper-card>
+    <template is="dom-repeat" items="[[characters]]" as="character">
+      <p>
+        [[character.name]]
+      </p>
+    </template>
   </template>
 
   <script>
     Polymer({
-      is: 'character-card'
+      is: 'character-list',
+      properties: {
+        characters: Array
+      }
     });
   </script>
 </dom-module>
