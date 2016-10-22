@@ -40,12 +40,12 @@
 
     </style>
 
-    <paper-card image="https://i.annihil.us/u/prod/marvel/i/mg/2/e0/5801124cc0e94/portrait_incredible.jpg">
+    <paper-card image="[[character.thumbnail.path]].[[character.thumbnail.extension]]">
       <div class="card-content">
-        <h1>Iron Man</h1>
+        <h1>[[character.name]]</h1>
         <p>
           <ellipsis-string
-            str="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, enim, fugit id labore molestias natus praesentium quia quo sapiente sed sint suscipit unde vero. Ab architecto asperiores numquam vel vitae"
+            str="[[character.description]]"
             len="50"
           ></ellipsis-string>
         </p>
@@ -58,7 +58,10 @@
 
   <script>
     Polymer({
-      is: 'character-card'
+      is: 'character-card',
+      properties: {
+        character: Object
+      }
     });
   </script>
 </dom-module>
