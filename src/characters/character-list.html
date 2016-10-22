@@ -1,19 +1,23 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="character-card.html">
 <link rel="import" href="../utils/ellipsis-string.html">
 
 <dom-module id="character-list">
   <template>
     <style>
       :host {
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      character-card {
+        margin: 10px;
       }
     </style>
     <template is="dom-repeat" items="[[characters]]" as="character">
-      <p>
-        [[character.name]]
-      </p>
+      <character-card character="[[character]]"></character-card>
     </template>
   </template>
 
