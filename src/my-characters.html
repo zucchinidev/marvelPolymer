@@ -9,7 +9,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="characters/character-card.html">
+<link rel="import" href="characters/character-list.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-characters">
@@ -21,16 +23,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
-
-    <div class="card">
-      <h1>Personajes</h1>
-      <character-card></character-card>
-    </div>
+    <iron-ajax auto
+               url="https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=cap&apikey=dffbff78239bd510c4663f2650082c60"
+               handle-as="json" last-response="{{response}}"
+    ></iron-ajax>
+    <h1>Personajes</h1>
+    <character-list
+      characters="[[response.data.results]]"
+    ></character-list>
   </template>
 
   <script>
     Polymer({
-      is: 'my-characters'
+      is: 'my-characters',
+      properties: {
+        response: Object
+      }
     });
   </script>
 </dom-module>
